@@ -23,6 +23,12 @@ class ProductController extends Controller
          return response()->json($product);
      }
      
+     public function scroll(Request $request)
+       {
+            $products = Product::paginate(10); // Adjust the number of items per page as needed
+            return response()->json($products);
+       }
+       
     public function index(Request $request)
     {
         $products = Product::with('category')->get();

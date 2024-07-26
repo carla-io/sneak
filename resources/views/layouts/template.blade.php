@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="{{ asset('dashboard/assets/vendor/css/core.css') }}" class="template-customizer-core-css" />
@@ -74,6 +75,16 @@
             border-radius: 0.5rem;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             width: auto; /* Ensure the width is appropriate */
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+        }
+        
+        #loading {
+            text-align: center;
+            padding: 10px;
         }
     </style>
 </head>
@@ -163,6 +174,7 @@
     <!-- Custom JS -->
     <script src="{{ asset('js/homepage.js') }}"></script>
     <script src="{{ asset('js/cart.js') }}"></script>
+    <script src="{{ asset('js/infiniteScroll.js') }}"></script>
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {

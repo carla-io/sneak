@@ -20,6 +20,8 @@
     <div class="row" id="productContainer">
         <!-- Products will be appended here dynamically -->
     </div>
+
+    <div id="loading" style="display: none;">Loading...</div>
 </div>
 
 <!-- Floating Cart Button -->

@@ -32,6 +32,8 @@ Route::post('create-product', [ProductController::class, 'create']);
 Route::post('update-product', [ProductController::class, 'update']);
 Route::delete('delete-product', [ProductController::class, 'delete']);
 Route::get('products/{id}', [ProductController::class, 'show']);
+Route::get('/products', [ProductController::class, 'scroll']);
+
 
 //category CRUD
 
