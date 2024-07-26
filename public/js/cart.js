@@ -5,7 +5,7 @@ $(document).ready(function () {
     updateCartCount();
 
     // Handle Proceed to Checkout
-    $('#checkoutButton').on('click', function () {
+    $('#checkout').on('click', function () {
         const token = localStorage.getItem('token');
         if (!token) {
             console.error('Token missing or expired');

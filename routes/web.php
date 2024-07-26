@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\ShipperController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
     return view('home');
@@ -35,6 +36,11 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('auth:sanctum')->get('/api/check-auth', function () {
     return response()->json(['authenticated' => Auth::check(), 'user' => Auth::user()]);
 });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/cart', [CartController::class, 'index']);
+});
+
 
 
 //Admin Routes
