@@ -11,6 +11,9 @@ use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\SalesController;
+use App\Http\Controllers\Api\SupplierController;
+use App\Http\Controllers\Api\ShipperController;
+use App\Http\Controllers\Api\UserController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -19,6 +22,9 @@ Route::get('/user', function (Request $request) {
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::get('users', [UserController::class, 'index']);
+Route::post('update-users', [UserController::class, 'updateRole']);
+Route::post('deactivate-users', [UserController::class, 'deactivateUser']);
 //Products CRUD
 
 Route::get('products', [ProductController::class, 'index']);
@@ -34,7 +40,23 @@ Route::post('create-category', [CategoryController::class, 'create']);
 Route::post('update-category', [CategoryController::class, 'update']);
 Route::delete('delete-category', [CategoryController::class, 'delete']);
 
+//supplier CRUD
+Route::get('supplier', [SupplierController::class, 'index']);
+Route::post('create-supplier', [SupplierController::class, 'create']);
+Route::post('update-supplier', [SupplierController::class, 'update']);
+Route::delete('delete-supplier', [SupplierController::class, 'delete']);
+
+//shipper CRUD
+Route::get('shipper', [ShipperController::class, 'index']);
+Route::post('create-shipper', [ShipperController::class, 'create']);
+Route::post('update-shipper', [ShipperController::class, 'update']);
+Route::delete('delete-shipper', [ShipperController::class, 'delete']);
+
+
 Route::post('checkout', [OrderController::class, 'checkout'])->middleware('auth:sanctum');
+
+Route::get('/most-used-category', [CategoryController::class, 'mostUsedCategory']);
+Route::get('/users-registered', [UserController::class, 'usersRegistered']);
 
 Route::get('search', [SearchController::class, 'search']);
 

@@ -7,7 +7,7 @@
                 },
                 columns: [
                     { data: 'id' },
-                    { data: 'name' },
+                    { data: 'username' },
                     { data: 'email' },
                     { data: 'role' },
                     { data: 'is_active', render: function(data, type, row) {

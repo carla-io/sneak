@@ -17,20 +17,20 @@
     <!-- Card for Product Pie Chart -->
     <div class="card mb-4" style="max-width: 600px; margin: auto;">
         <div class="card-header text-center">
-            <h5 class="card-title mb-0">Product Pie Chart</h5>
+            <h5 class="card-title mb-0">Category Pie Chart</h5>
         </div>
         <div class="card-body">
-            <canvas id="productPieChart" width="400" height="200"></canvas>
+            <canvas id="mostUsedCategoryChart" width="400" height="200"></canvas>
         </div>
     </div>
 
     <!-- Card for Users Line Chart -->
     <div class="card mb-4" style="max-width: 600px; margin: auto;">
         <div class="card-header text-center">
-            <h5 class="card-title mb-0">Sales Line Chart</h5>
+            <h5 class="card-title mb-0">User Register Line Chart</h5>
         </div>
         <div class="card-body">
-            <canvas id="salesLineChart" width="600" height="400"></canvas>
+            <canvas id="usersRegisteredChart" width="600" height="400"></canvas>
         </div>
     </div>
 </div>
