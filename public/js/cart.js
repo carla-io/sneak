@@ -29,10 +29,16 @@ $(document).ready(function () {
                 'Accept': 'application/json'
             },
             success: function (response) {
-                alert('Checkout successful!');
-                sessionStorage.setItem('cart', JSON.stringify([])); // Clear the cart
-                displayCart([]); // Clear the cart display
-                updateCartCount(); // Update cart count
+                if (response.order_ids && response.order_ids.length > 0) {
+                    alert('Checkout successful!');
+                    sessionStorage.setItem('cart', JSON.stringify([])); // Clear the cart
+                    displayCart([]); // Clear the cart display
+                    updateCartCount(); // Update cart count
+                    // Redirect to summary page with order IDs
+                    // window.location.href = '/orders/summary?order_ids=' + response.order_ids.join(',');
+                } else {
+                    alert('Failed to retrieve order IDs.');
+                }
             },
             error: function (xhr, status, error) {
                 console.error('Checkout failed:', status, error);
@@ -110,7 +116,6 @@ function removeFromCart(index) {
     updateCartCount();
 }
 
-// Function to add a product to cart
 // Function to add a product to cart
 function addToCart(productId) {
     let cart = JSON.parse(sessionStorage.getItem('cart')) || [];

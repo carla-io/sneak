@@ -12,4 +12,9 @@ class Shipper extends Model
     protected $table = 'shipper';
 
     protected $fillable = ['shipper_name', 'shipper_contact', 'shipper_address', 'image'];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

@@ -86,6 +86,7 @@
             text-align: center;
             padding: 10px;
         }
+        
     </style>
 </head>
 <body>
@@ -175,6 +176,7 @@
     <script src="{{ asset('js/homepage.js') }}"></script>
     <script src="{{ asset('js/cart.js') }}"></script>
     <script src="{{ asset('js/infiniteScroll.js') }}"></script>
+    <script src="{{ asset('js/form-wizard.js') }}"></script>
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {

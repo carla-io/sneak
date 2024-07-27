@@ -9,28 +9,34 @@ use Yajra\DataTables\DataTables;
 
 class OrderController extends Controller
 {
-    public function checkout(Request $request)
-    {
-        $user = Auth::user();
-        $cart = $request->input('cart');
+    // public function checkout(Request $request)
+    // {
+    //     $user = Auth::user();
+    //     $cart = $request->input('cart');
         
-        foreach ($cart as $item) {
-            Order::create([
-                'user_id' => $user->id,
-                'product_name' => $item['name'],
-                'quantity' => $item['quantity'],
-                'total_price' => $item['price'] * $item['quantity'],
-                'status' => 'pending',
-            ]);
-        }
+    //     foreach ($cart as $item) {
+    //         Order::create([
+    //             'user_id' => $user->id,
+    //             'product_name' => $item['name'],
+    //             'quantity' => $item['quantity'],
+    //             'total_price' => $item['price'] * $item['quantity'],
+    //             'status' => 'pending',
+    //         ]);
+    //     }
         
-        return response()->json(['success' => true]);
-    }
+    //     return response()->json(['success' => true]);
+    // }
 
-    public function index()
+    // public function index()
+    // {
+    //     $orders = Order::with('user')->get();
+    //     return response()->json($orders);
+    // }
+
+    public function receipt($id)
     {
-        $orders = Order::with('user')->get();
-        return response()->json($orders);
+        $order = Order::with('shipper')->findOrFail($id);
+        return view('receipt', compact('order'));
     }
 }
 

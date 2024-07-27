@@ -11,6 +11,9 @@ use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\ShipperController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ReceiptController;
+
+
 
 Route::get('/', function () {
     return view('home');
@@ -40,6 +43,16 @@ Route::middleware('auth:sanctum')->get('/api/check-auth', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/cart', [CartController::class, 'index']);
 });
+
+Route::get('/receipt', function () {
+    return view('receipt');
+})->name('receipt');
+
+
+Route::middleware('auth:sanctum')->post('checkout', [CartController::class, 'checkout'])->name('checkout');
+// Route::middleware('auth:sanctum')->get('orders/{id}/receipt', [OrderController::class, 'receipt'])->name('orders.receipt');
+Route::get('/orders/summary', [ReceiptController::class, 'summary'])->name('receipt');
+
 
 
 

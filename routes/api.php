@@ -56,6 +56,10 @@ Route::delete('delete-shipper', [ShipperController::class, 'delete']);
 
 
 Route::post('checkout', [OrderController::class, 'checkout'])->middleware('auth:sanctum');
+// Route::get('/orders/summary', [OrderController::class, 'summary'])->name('receipt');
+Route::middleware('auth:sanctum')->post('orders/{id}/status', [OrderController::class, 'updateStatus']);
+Route::middleware('auth:sanctum')->get('orders/{id}', [OrderController::class, 'show']);
+
 
 Route::get('/most-used-category', [CategoryController::class, 'mostUsedCategory']);
 Route::get('/users-registered', [UserController::class, 'usersRegistered']);
@@ -66,15 +70,15 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/admin/update-role/{userId}', [AdminController::class, 'updateRole']);
     Route::post('/admin/deactivate-user/{userId}', [AdminController::class, 'deactivateUser']);
     
-    Route::post('/cart/add', [CartController::class, 'add']);
-Route::get('/cart', [CartController::class, 'getCart']);
-Route::post('/cart/checkout', [CartController::class, 'checkout']);
-Route::post('/cart/remove', [CartController::class, 'remove']);
+//     Route::post('/cart/add', [CartController::class, 'add']);
+// Route::get('/cart', [CartController::class, 'getCart']);
+// Route::post('/cart/checkout', [CartController::class, 'checkout']);
+// Route::post('/cart/remove', [CartController::class, 'remove']);
 
     
 });
 
 Route::middleware('auth:sanctum')->get('orders', [OrderController::class, 'index']);
-Route::middleware('auth:sanctum')->post('create-orders', [OrderController::class, 'store']);
+// Route::middleware('auth:sanctum')->post('create-orders', [OrderController::class, 'store']);
 
 Route::middleware('auth:sanctum')->get('sales', [SalesController::class, 'index']);
